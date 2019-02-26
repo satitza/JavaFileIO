@@ -16,16 +16,16 @@ public class FileByteStream implements IFileManage {
         try  {
 
             in = new FileInputStream(fileName);
-            bos = new ByteArrayOutputStream();
+            bos = new ByteArrayOutputStream(); // create ByteArrayOutputStream for write byte to buffers
 
             buffers = new byte[2048];
             int length;
 
-            while ((length = in.read(buffers)) != -1) {
-                bos.write(buffers, 0, length);
+            while ((length = in.read(buffers)) != -1) { // in.read(2048) read one by 2048 byte
+                bos.write(buffers, 0, length); // write byte to buffers
             }
             in.close();
-            return bos.toByteArray();
+            return bos.toByteArray(); // return byte array
 
         } catch (IOException ex){
             ex.printStackTrace();
@@ -53,11 +53,45 @@ public class FileByteStream implements IFileManage {
     private BufferedOutputStream buffer_out;
 
     public byte[] BufferReadFileStream(String fileName) {
-        return null;
+
+        try {
+
+            buffer_in = new BufferedInputStream(new FileInputStream(fileName));
+            bos = new ByteArrayOutputStream();
+
+            byte[] buffers = new byte[2048];
+            int length;
+
+            while ((length = buffer_in.read(buffers)) != -1) {
+                bos.write(buffers, 0, length);
+            }
+
+            buffer_in.close();
+            return bos.toByteArray();
+
+        } catch (IOException ex){
+
+            ex.printStackTrace();
+            return null;
+
+        }
     }
 
     public boolean BufferWriteFileStream(String fileName, byte[] buffers) {
-        return false;
+
+        try {
+
+            buffer_out = new BufferedOutputStream(new FileOutputStream(fileName));
+            buffer_out.write(buffers);
+            buffer_out.close();
+            return true;
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+            return false;
+
+        }
     }
 
 }
