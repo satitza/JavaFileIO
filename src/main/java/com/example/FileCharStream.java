@@ -1,7 +1,5 @@
 package com.example;
 
-import com.sun.tools.javac.code.Attribute;
-
 import java.io.*;
 
 public class FileCharStream implements IFileManage {

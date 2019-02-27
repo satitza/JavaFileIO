@@ -2,7 +2,7 @@ package com.example;
 
 import java.io.*;
 
-public class FileByteStream implements IFileManage {
+public class FileByteStream {
 
     private byte[] buffers;
 
@@ -18,13 +18,15 @@ public class FileByteStream implements IFileManage {
             in = new FileInputStream(fileName);
             bos = new ByteArrayOutputStream(); // create ByteArrayOutputStream for write byte to buffers
 
-            buffers = new byte[2048];
+            buffers = new byte[1];
             int length;
 
-            while ((length = in.read(buffers)) != -1) { // in.read(2048) read one by 2048 byte
+            while ((length = in.read(buffers)) != -1) { // in.read(1) read one by one byte
+
                 bos.write(buffers, 0, length); // write byte to buffers
             }
             in.close();
+
             return bos.toByteArray(); // return byte array
 
         } catch (IOException ex){
@@ -49,7 +51,7 @@ public class FileByteStream implements IFileManage {
         }
     }
 
-    private BufferedInputStream buffer_in;
+    /*private BufferedInputStream buffer_in;
     private BufferedOutputStream buffer_out;
 
     public byte[] BufferReadFileStream(String fileName) {
@@ -92,6 +94,7 @@ public class FileByteStream implements IFileManage {
             return false;
 
         }
-    }
+    }*/
+
 
 }
