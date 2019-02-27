@@ -2,45 +2,56 @@ package com.example;
 
 import java.io.*;
 
-public class FileCharStream implements IFileManage {
+public class FileCharStream  {
 
-    private byte[] buffers;
+    private char[] buffers;
 
-    private CharArrayWriter caw;
 
     private InputStreamReader read;
     private OutputStreamWriter write;
 
-    public byte[] ReadFileStream(String fileName) {
+    public char[] ReadFileStream(String fileName) {
 
         try {
 
-            read = new InputStreamReader(new FileInputStream(fileName), "UTF-8");
+            read = new InputStreamReader(new FileInputStream(fileName), "TIS-620");
+            CharArrayWriter caw = new CharArrayWriter();
+
+            buffers = new char[1];
+            int len;
+
+            while ((len = read.read(buffers)) != -1) {
+                caw.write(buffers, 0 , len);
+            }
+
+            read.close();
+            return caw.toCharArray();
+
 
 
         } catch (IOException ex){
 
             ex.printStackTrace();
+            return null;
+
+        }
+    }
+
+    public boolean WriteFileStream(String fileName, char[] buffers) {
+
+        try {
+
+            write = new OutputStreamWriter(new FileOutputStream(fileName), "TIS-620");
+            write.write(buffers);
+            write.close();
+            return true;
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+            return false;
 
         }
 
-
-        return new byte[0];
-    }
-
-    public boolean WriteFileStream(String fileName, byte[] buffers) {
-        return false;
-    }
-
-
-    private BufferedReader buffer_read;
-    private BufferedWriter buffer_write;
-
-    public byte[] BufferReadFileStream(String fileName) {
-        return new byte[0];
-    }
-
-    public boolean BufferWriteFileStream(String fileName, byte[] buffers) {
-        return false;
     }
 }
