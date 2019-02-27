@@ -11,7 +11,7 @@ public class FileByteStream {
     private InputStream in;
     private OutputStream out;
 
-    public byte[] ReadFileStream(String fileName) {
+    public byte[] readFileStream(String fileName) {
 
         try  {
 
@@ -36,7 +36,7 @@ public class FileByteStream {
         }
     }
 
-    public boolean WriteFileStream(String fileName, byte[] buffers) {
+    public boolean writeFileStream(String fileName, byte[] buffers) {
 
         try {
 

@@ -8,7 +8,7 @@ public class MainClass {
     public static void main(String[] args) {
 
         FileByteStream fb = new FileByteStream();
-        byte[] buffers = fb.ReadFileStream(filePdf);
+        byte[] buffers = fb.readFileStream(filePdf);
 
         for (int i = 0; i < buffers.length; i++) {
 
@@ -19,12 +19,12 @@ public class MainClass {
 
         }
 
-        if(fb.WriteFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java-2.pdf", buffers) == true){
+        if(fb.writeFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java-2.pdf", buffers) == true){
             System.out.println("Write pdf file success");
         }
 
         FileCharStream fc = new FileCharStream();
-        char[] char_buffers = fc.ReadFileStream(fileTxt);
+        char[] char_buffers = fc.readFileStream(fileTxt);
 
         for (int i = 0; i < char_buffers.length; i++) {
 
@@ -35,7 +35,7 @@ public class MainClass {
 
         }
 
-        if(fc.WriteFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/output2.txt", char_buffers) == true){
+        if(fc.writeFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/output2.txt", char_buffers) == true){
             System.out.println("Write text file success");
         }
 

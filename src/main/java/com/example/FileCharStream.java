@@ -10,7 +10,7 @@ public class FileCharStream  {
     private InputStreamReader read;
     private OutputStreamWriter write;
 
-    public char[] ReadFileStream(String fileName) {
+    public char[] readFileStream(String fileName) {
 
         try {
 
@@ -37,7 +37,7 @@ public class FileCharStream  {
         }
     }
 
-    public boolean WriteFileStream(String fileName, char[] buffers) {
+    public boolean writeFileStream(String fileName, char[] buffers) {
 
         try {
 
