@@ -19,7 +19,9 @@ public class MainClass {
 
         }
 
-        fb.WriteFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java-2.pdf", buffers);
+        if(fb.WriteFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java-2.pdf", buffers) == true){
+            System.out.println("Write pdf file success");
+        }
 
         FileCharStream fc = new FileCharStream();
         char[] char_buffers = fc.ReadFileStream(fileTxt);
@@ -33,7 +35,9 @@ public class MainClass {
 
         }
 
-        fc.WriteFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/output2.txt", char_buffers);
+        if(fc.WriteFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/output2.txt", char_buffers) == true){
+            System.out.println("Write text file success");
+        }
 
     }
 
