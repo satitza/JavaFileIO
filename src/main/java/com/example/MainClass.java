@@ -1,12 +1,15 @@
 package com.example;
 
+//import java.nio.charset.StandardCharsets;
+import java.io.UnsupportedEncodingException;
+
 public class MainClass {
 
     private static String fileName = "/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java.pdf";
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws UnsupportedEncodingException {
 
-        FileByteStream fb = new FileByteStream();
+        /*FileByteStream fb = new FileByteStream();
 
         byte[] buffers = fb.ReadFileStream(fileName);
 
@@ -20,10 +23,20 @@ public class MainClass {
 
         }
 
-        
+        fb.WriteFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java-2.pdf", buffers);*/
 
 
-        fb.WriteFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java-2.pdf", buffers);
+        byte[] byteString = "Anonymous".getBytes("UTF-8");
+
+        for (int i = 0; i < byteString.length; i++) {
+            System.out.println(byteString[i]);
+        }
+
+        byte[] byteStringUTF = "Anonymous".getBytes("TIS-620");
+
+        for (int i = 0; i < byteString.length; i++) {
+            System.out.println(byteStringUTF[i]);
+        }
 
 
     }
