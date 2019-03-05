@@ -1,18 +1,21 @@
 package com.example;
 
+import java.io.*;
+
 public class MainClass {
 
     private static String filePdf = "/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java.pdf";
     private static String fileTxt = "/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/output.txt";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         FileByteStream fb = new FileByteStream();
         byte[] buffers = fb.readFileStream(filePdf);
 
         for (int i = 0; i < buffers.length; i++) {
 
-            System.out.printf("index of byte %d value int is  %d ", i , buffers[i]);
+
+            System.out.printf("index of byte %d value of byte is  %d ", i , buffers[i]);
             System.out.print(" :  value binary is " + Integer.toBinaryString(buffers[i]));
             System.out.print(" :  value hex is " + Integer.toHexString(buffers[i]));
             System.out.println(" :  value oct is " + Integer.toOctalString(buffers[i]));

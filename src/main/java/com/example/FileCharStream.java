@@ -6,6 +6,7 @@ public class FileCharStream  {
 
     private char[] buffers;
 
+    private CharArrayWriter caw;
 
     private InputStreamReader read;
     private OutputStreamWriter write;
@@ -15,7 +16,7 @@ public class FileCharStream  {
         try {
 
             read = new InputStreamReader(new FileInputStream(fileName), "TIS-620");
-            CharArrayWriter caw = new CharArrayWriter();
+            caw = new CharArrayWriter();
 
             buffers = new char[1];
             int len;
