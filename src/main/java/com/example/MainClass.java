@@ -1,13 +1,26 @@
 package com.example;
 
-import java.io.*;
+import org.apache.log4j.Logger;
 
 public class MainClass {
 
-    private static String filePdf = "/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java.pdf";
-    private static String fileTxt = "/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/output.txt";
+    private static String filePdf = "/media/Project/JavaFileIO/src/main/java/com/example/Java.pdf";
+    private static String fileTxt = "/media/Project/JavaFileIO/src/main/java/com/example/output.txt";
 
-    public static void main(String[] args) throws IOException {
+    private static Logger logger = Logger.getLogger(MainClass.class);
+
+    MainClass(){
+
+        logger.trace("TRACE"); // ติดตาม
+        logger.debug("DEBUG"); // การแก้ปัญหา
+        logger.info("INFO"); // ข้อมูล
+        logger.warn("WARN"); // เตือน
+        logger.error("ERROR"); // ความผิดพลาด
+        logger.fatal("FATAL"); // ร้ายแรง
+
+    }
+
+    public static void main(String[] args) {
 
         FileByteStream fb = new FileByteStream();
         byte[] buffers = fb.readFileStream(filePdf);
@@ -22,8 +35,10 @@ public class MainClass {
 
         }
 
-        if(fb.writeFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/Java-2.pdf", buffers) == true){
-            System.out.println("Write pdf file success");
+        if(fb.writeFileStream("/media/Project/JavaFileIO/src/main/java/com/example/Java-2.pdf", buffers) == true){
+
+            logger.info("Write pdf file success");
+
         }
 
         FileCharStream fc = new FileCharStream();
@@ -38,8 +53,10 @@ public class MainClass {
 
         }
 
-        if(fc.writeFileStream("/home/exodus/Desktop/Java/JavaFileIO/src/main/java/com/example/output2.txt", char_buffers) == true){
-            System.out.println("Write text file success");
+        if(fc.writeFileStream("/media/Project/JavaFileIO/src/main/java/com/example/output2.txt", char_buffers) == true){
+
+            logger.info("Write text file success");
+
         }
 
     }

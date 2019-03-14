@@ -1,5 +1,7 @@
 package com.example;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 
 public class FileCharStream  {
@@ -11,14 +13,22 @@ public class FileCharStream  {
     private InputStreamReader read;
     private OutputStreamWriter write;
 
+    private File file;
+
+    private final Logger logger = Logger.getLogger(FileCharStream.class.getName());
+
+    public  FileCharStream () {
+
+    }
+
     public char[] readFileStream(String fileName) {
 
         try {
 
-            read = new InputStreamReader(new FileInputStream(fileName), "TIS-620");
+            read = new InputStreamReader(new FileInputStream(file = new File(fileName)), "TIS-620");
             caw = new CharArrayWriter();
 
-            buffers = new char[1];
+            buffers = new char[(int)file.length()];
             int len;
 
             while ((len = read.read(buffers)) != -1) {
@@ -32,7 +42,7 @@ public class FileCharStream  {
 
         } catch (IOException ex){
 
-            ex.printStackTrace();
+            logger.error(ex.getMessage());
             return null;
 
         }
@@ -49,7 +59,7 @@ public class FileCharStream  {
 
         } catch (IOException ex) {
 
-            ex.printStackTrace();
+            logger.error(ex.getMessage());
             return false;
 
         }
